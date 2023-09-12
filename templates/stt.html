@@ -1,0 +1,284 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<!--뒷 배경 지우기-->
+
+<!-- Mirrored from rallyinteractive.com/case-studies/ikon-pass-destinations/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 07 Aug 2023 01:58:49 GMT -->
+<head>
+        <meta charset="UTF-8">
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" name="viewport"/>
+        <meta content="ie=edge" http-equiv="X-UA-Compatible">
+
+        
+
+            <script src="static/js/stt.min.js"></script>
+            <link href="static/css/stt.min.css" rel="stylesheet">
+
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154318312-1"></script>
+            <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-154318312-1');
+    </script>
+    <style>
+    #transcriptButtons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            z-index: 1;
+        }
+
+        p {
+            margin: 10px;
+            font-size: 20pt;
+        }
+
+    #custom-button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .custom-button:hover {
+    background-color: #0056b3;
+}
+#transcriptContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    </style>
+        
+
+        <title>KSL: Korean Sign Language
+    </title>
+    </head>
+<body class="fonts-loading">
+    <canvas id="ribbon"></canvas>
+
+    <div id="logo">
+        <a class="no-barba" href="/webpage">
+            <button class="custom-button" type="submit" onclick="window.location.href='/'">
+                Start
+            </button>
+        </a>
+    </div>
+
+    <div id="hire-us">
+    </div>
+
+    <a href="#" id="menu-button">
+    </a>
+
+    <div id="menu">
+        <div id="menu-wrapper">
+            <ul id="menu-items">
+            </ul>
+        </div>
+    </div>
+
+    
+    <script>
+        if (location.hostname.indexOf('rally') == -1) {
+            // Site.toggleGrid();
+            // Site.toggleStats();
+        }
+
+        Ribbon.init(document.getElementById('ribbon'));
+    </script>
+
+    <div id="wrapper">
+        <div class="page-content case-detail-page"> 
+
+<div id="ikon-pass-destinations-casestudy"
+    class="case"
+    data-slug="webpage"
+    data-primarycolor="#FFFFFF"
+    data-secondarycolor="#FFFFFF"
+    style="--accent-color: #FFFFFF; --accent-hover-color: #FFFFFF; --selection-color: rgba(255,255,255);">
+
+    <div class="case-title">
+        <h1>STT</h1>
+        <h2>KSL:Korean Sign Language</h2>
+        <span class="stroke" style="background-color: #338fb9" ></span>
+        <h3><br /></h3>
+    </div>
+
+
+
+<div id="transcriptButtons">
+    <h1>Speech Recognition</h1>
+    <form method="POST" action="/stt">
+        <button type="submit" id="startButton">Start Recording</button>
+        <button type="button" id="deleteButton">Delete Latest</button>
+    </form>
+</div>
+
+    <h2>Transcript:</h2>
+    <div id="transcriptContainer">
+        {% for line in transcript %}
+            <p>{{ line }}</p>
+        {% endfor %}
+    </div>
+
+    <script>
+        const startButton = document.getElementById('startButton');
+        startButton.addEventListener('click', () => {
+            if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) {
+                navigator.mediaDevices.getUserMedia({ audio: true })
+                    .then(function(stream) {
+                        console.log('Microphone access granted.');
+                        // 여기에 음성 인식 등의 기능 구현
+                        // 예: 녹음 시작, Google Speech API 호출 등
+                    })
+                    .catch(function(err) {
+                        console.error('Error accessing microphone:', err);
+                    });
+            } else {
+                console.error('getUserMedia is not supported in this browser.');
+            }
+        });
+
+        const deleteButton = document.getElementById('deleteButton');
+        deleteButton.addEventListener('click', () => {
+            fetch('/delete', {
+                method: 'POST'
+            })
+            .then(response => response.json())
+            .then(data => {
+                const transcriptContainer = document.querySelector('#transcriptContainer');
+                transcriptContainer.innerHTML = '';
+                data.transcript.forEach(line => {
+                    const pElement = document.createElement('p');
+                    pElement.textContent = line;
+                    transcriptContainer.appendChild(pElement);
+                });
+            })
+            .catch(error => console.error('Error deleting transcript:', error));
+        });
+    </script>
+
+
+
+
+    <div id="heroshots" class="iphone-ipad-layout heroshots"></div>
+
+
+    <div id="heroshot-slider-container" class="heroshot-slider-container">
+        <div id="heroshot-slider-wrapper">
+            <div class="heroshot-slider">
+                    <div class="heroshot-cell iphone-X">  
+                    </div>
+                    <div class="heroshot-cell ipad">
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="case-tagline-mobile">
+        
+    </div>
+
+    <div id="case-intro" class="intro-paragraphs">
+    </div>
+
+    <div id="case-details">
+        <div id="de-svg">
+            
+        </div>
+
+
+        <div class="launch-square">
+           
+        </div>
+
+        <div id="deets-dash"></div>
+
+        <div id="ets-svg">
+            
+        </div>
+    </div>
+
+    <div id="case-styles">
+        
+
+    </div>
+
+    
+    <div id="style-cards">
+    </div>
+    
+
+    
+    <div id="small-slider-container">
+        
+    </div>
+    
+</div>
+
+    
+<script>
+    Site.previousPage = Site.currentPage;
+    let caseStudy = new Case(document.getElementById('ikon-pass-destinations-casestudy'));
+    Site.currentPage = caseStudy;
+
+    
+    caseStudy.nextPrimaryColor = Color.hexToRgb('#f5865e');
+    caseStudy.nextSecondaryColor = Color.hexToRgb('#e37a52');
+    
+
+    caseStudy.firstRun = function() {
+        Site.currentPage.addListeners();
+        Ribbon.drawArea = {top: 0, height: Math.max(innerWidth * 1.125, 1600)};
+        Ribbon.primaryColor = caseStudy.primaryColor;
+        Ribbon.secondaryColor = caseStudy.secondaryColor;
+        Ribbon.setMode(Ribbon.Mode.CASE_DETAIL);
+    }
+</script>
+
+            </div>
+        </div>
+
+        <div id="menu-modal"></div>
+
+        <script>
+        FontCssLoader.init(["https://cloud.typography.com/7471996/6732792/css/fonts.css", "/static/css/fonts.css"], function() {
+            Menu.init();
+
+            Site.init();
+            if (Site.smoothScroll) {
+                Site.smoothScroll.paginate = Site.currentPage.paginate;
+                Site.smoothScroll.paginateModifier = (Site.currentPage.paginateModifier || 1);
+            }
+
+            if (Site.currentPage && Site.currentPage.firstRun) {
+                Site.currentPage.firstRun();
+            }
+
+            Site.startRendering();
+
+            Site.prepareForIntro();
+            document.body.classList.remove('fonts-loading');
+            setTimeout(function() {
+                requestAnimationFrame(function() {
+                    Site.playIntro();
+                });
+            }, 25);
+        });
+    </script>
+    </body>
+
+<!-- Mirrored from rallyinteractive.com/case-studies/ikon-pass-destinations/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 07 Aug 2023 01:58:58 GMT -->
+</html>
+
+
+보스/이벤트/

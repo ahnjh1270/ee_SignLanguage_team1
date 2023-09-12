@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<!--뒷 배경 지우기-->   
+
+<!-- Mirrored from rallyinteractive.com/case-studies/spotify-fan-study/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Aug 2023 16:00:40 GMT -->
+<head>
+        <meta charset="UTF-8">
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" name="viewport"/>
+        <meta content="ie=edge" http-equiv="X-UA-Compatible">
+
+        
+
+            <script src="static/js/ksl_program.min.js"></script>
+            <link href="static/css/ksl_program.min.css" rel="stylesheet">
+
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154318312-1"></script>
+            <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-154318312-1');
+    </script>
+
+<style>
+    /* Add CSS to style the text-container div */
+    #text-container {
+        font-size: 20pt;
+        text-align: center;
+        position: relative;
+        height: 100px; 
+    }
+    #text-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+    }
+
+    /* Add CSS to center the video */
+    #video-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        z-index: 1;
+    }
+    </style>
+        
+
+        <title>KSL:Korean Sign Language
+    </title>
+    
+</head>
+<body class="fonts-loading">
+    <canvas id="ribbon"></canvas>
+
+    <div id="logo">
+        <a class="no-barba" href="/webpage">
+            <button type="submit" onclick="window.location.href='/'">
+                Start
+            </button>
+        </a>
+    </div>
+
+
+    <div id="hire-us">
+    </div>
+
+    <a id="menu-button">
+    </a>
+
+    <div id="menu">
+        <div id="menu-wrapper">
+            <ul id="menu-items">
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        if (location.hostname.indexOf('rally') == -1) {
+            // Site.toggleGrid();
+            // Site.toggleStats();
+        }
+
+        Ribbon.init(document.getElementById('ribbon'));
+    </script>
+
+
+    <div id="wrapper">
+        <div class="page-content case-detail-page"> 
+
+<div id="webpage-casestudy"
+    class="case"
+    data-slug="webpage"
+    data-primarycolor="#FFFFFF"
+    data-secondarycolor="#FFFFFF"
+    style="--accent-color: #FFFFFF; --accent-hover-color: #FFFFFF; --selection-color: rgb(255, 255, 255);">
+
+    <div class="case-title">
+        <h1>KSL</h1>
+        <h2>Korean Sign Language</h2>
+        <span class="stroke" style="background-color: #e79d40" ></span>
+        <h3></h3><br /></h3>
+    </div>
+
+    
+<div id="video-container">
+    <img src="{{ url_for('video_feed') }}" width="640" height="480">
+</div>
+
+<div id="text-container">
+    <div id="text-content"></div>
+</div>
+
+<!-- Add JavaScript to fetch the text from the server and update the content -->
+<script>
+    // Function to update the text content
+    function updateText(newText) {
+        const textContent = document.getElementById('text-content');
+        textContent.innerHTML = newText;
+    }
+
+    // Function to fetch the text from the server
+    function fetchText() {
+        fetch('/get_text')
+            .then(response => response.json())
+            .then(data => {
+                updateText(data.text);
+                setTimeout(fetchText, 1000); // Fetch text every 1000 milliseconds (1 second)
+            })
+            .catch(error => {
+                console.error('Error fetching text:', error);
+            });
+    }
+
+    // Start fetching text when the page loads
+    document.addEventListener('DOMContentLoaded', fetchText);
+</script>
+
+
+    <div id="heroshots" class="iphone-ipad-layout heroshots"> 
+    </div>
+
+    
+
+    <div id="heroshot-slider-container" class="heroshot-slider-container">
+        <div id="heroshot-slider-wrapper">
+            <div class="heroshot-slider">
+
+                
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="case-intro" class="intro-paragraphs"></div>
+
+    <div id="case-details">
+        <div id="de-svg">
+        </div>
+
+
+        <div class="launch-square"></div>
+
+        <div id="deets-dash"></div>
+
+        <div id="ets-svg"></div>
+    </div>
+
+    <div id="case-styles">
+        <div id="style-header"></div>
+        <div id="style-description"></div>
+    </div>
+    
+</div>
+
+
+
+
+<script>
+    Site.previousPage = Site.currentPage;
+    let caseStudy = new Case(document.getElementById('webpage-casestudy'));
+    Site.currentPage = caseStudy;
+
+    
+    caseStudy.nextPrimaryColor = Color.hexToRgb('#389CCA');
+    caseStudy.nextSecondaryColor = Color.hexToRgb('#2E82A8');
+    
+
+    caseStudy.firstRun = function() {
+        Site.currentPage.addListeners();
+        Ribbon.drawArea = {top: 0, height: Math.max(innerWidth * 1.125, 1600)};
+        Ribbon.primaryColor = caseStudy.primaryColor;
+        Ribbon.secondaryColor = caseStudy.secondaryColor;
+        Ribbon.setMode(Ribbon.Mode.CASE_DETAIL);
+    }
+</script>
+
+        <script> //새로고침
+            function refreshAndRedirect(url) {
+            window.location.href = url; // 지정한 URL로 이동
+        }
+        </script>
+
+        <div id="menu-modal"></div>
+
+        <script>
+        FontCssLoader.init(["https://cloud.typography.com/7471996/6732792/css/fonts.css", "/static/css/fonts.css"], function() {
+            Menu.init();
+
+            Site.init();
+            if (Site.smoothScroll) {
+                Site.smoothScroll.paginate = Site.currentPage.paginate;
+                Site.smoothScroll.paginateModifier = (Site.currentPage.paginateModifier || 1);
+            }
+
+            if (Site.currentPage && Site.currentPage.firstRun) {
+                Site.currentPage.firstRun();
+            }
+
+            Site.startRendering();
+
+            Site.prepareForIntro();
+            document.body.classList.remove('fonts-loading');
+            setTimeout(function() {
+                requestAnimationFrame(function() {
+                    Site.playIntro();
+                });
+            }, 25);
+        });
+    </script>
+    </body>
+
+<!-- Mirrored from rallyinteractive.com/case-studies/spotify-fan-study/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Aug 2023 16:00:43 GMT -->
+</html>
